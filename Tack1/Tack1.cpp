@@ -121,6 +121,179 @@ void reshape(int w, int h)
 
 }
 
+void drawFace(double r){//画脸
+
+	//脸
+	//glColor3ub(255, 255, 0);//颜色为黄色
+	glBegin(GL_TRIANGLE_FAN);//三角化
+	glVertex2f(0, 0);//圆点
+	for (double angle = 0; angle <= 360; angle = angle + 1){
+		glVertex2f(cos(angle*2.0*PI / 360.0)*r, sin(angle*2.0*PI / 360.0)*r);
+	}
+	glEnd();
+
+	//右眼
+	glColor3ub(0, 0, 0);//颜色为黑色
+	glBegin(GL_TRIANGLE_FAN);//三角化
+	glVertex2f(r / 3, r / 3);//圆点
+	for (double angle = 0; angle <= 360; angle = angle + 1){
+		glVertex2f(cos(angle*2.0*PI / 360.0)*(r / 10) + r / 3, sin(angle*2.0*PI / 360.0)*(r / 10) + r / 3);
+	}
+	glEnd();
+
+	//左眼
+	glColor3ub(0, 0, 0);//颜色为黑色
+	glBegin(GL_TRIANGLE_FAN);//三角化
+	glVertex2f(-r / 3, r / 3);//圆点
+	for (double angle = 0; angle <= 360; angle = angle + 1){
+		glVertex2f(cos(angle*2.0*PI / 360.0)*(r / 10) - r / 3, sin(angle*2.0*PI / 360.0)*(r / 10) + r / 3);
+	}
+	glEnd();
+
+	//嘴巴
+	glLineWidth(2);
+	glColor3ub(0, 0, 0);//颜色为黑色
+	glBegin(GL_LINE_STRIP);//非闭合线段
+
+	for (double angle = 315; angle >= 225; angle = angle - 1){
+		glVertex2f(cos(angle*2.0*PI / 360.0)*(r / 2), sin(angle*2.0*PI / 360.0)*(r / 2));
+	}
+	glEnd();
+	//glFlush();
+}
+
+void drawElemBody(){
+	//glColor3ub(255,255,0);//颜色为黄色
+	glBegin(GL_TRIANGLE_FAN);//三角化
+	glVertex2f(-20, 30);
+	glVertex2f(-20, -30);
+	glVertex2f(20, -30);
+	glVertex2f(20, 30);
+	glEnd();
+
+	glLineWidth(2);
+	glBegin(GL_LINES);//非闭合线段
+	glVertex2f(0, 30);
+	glVertex2f(0, 60);
+	glEnd();
+}
+
+void drawRobot(){
+	glClear(GL_COLOR_BUFFER_BIT);
+
+	glMatrixMode(GL_MODELVIEW);
+	glLoadIdentity();
+
+	glPushMatrix(); {//左脚大腿
+		glScalef(0.3f, 0.3f, 0.3f);//缩放
+		glTranslatef(-40.f, -150.f, 0.f);//平移
+		//glRotatef(0.f, 0.f, 0.f, 1.f);//
+		glColor3ub(255, 0, 0);
+		drawElemBody();
+	}
+	glPopMatrix();
+
+	glPushMatrix(); {//左脚小腿
+		glScalef(0.3f, 0.3f, 0.3f);//缩放
+		glTranslatef(-40.f, -230.f, 0.f);//平移
+		//glRotatef(0.f, 0.f, 0.f, 1.f);//
+		glColor3ub(255, 0, 0);
+		drawElemBody();
+	}
+	glPopMatrix();
+
+	glPushMatrix(); {//右脚大腿
+		glScalef(0.3f, 0.3f, 0.3f);//缩放
+		glTranslatef(40.f, -150.f, 0.f);//平移
+		//glRotatef(0.f, 0.f, 0.f, 1.f);//
+		glColor3ub(255, 0, 0);
+		drawElemBody();
+	}
+	glPopMatrix();
+
+	glPushMatrix(); {//右脚小腿
+		glScalef(0.3f, 0.3f, 0.3f);//缩放
+		glTranslatef(40.f, -230.f, 0.f);//平移
+		//glRotatef(0.f, 0.f, 0.f, 1.f);//
+		glColor3ub(255, 0, 0);
+		drawElemBody();
+	}
+	glPopMatrix();
+
+	glPushMatrix(); {//身体
+		glTranslatef(0.f, 0.001f, 0.f);//平移
+		glColor3ub(0, 0, 255);
+		drawElemBody();
+	}
+	glPopMatrix();
+
+	//画脸
+	glPushMatrix(); {
+		glScalef(0.5f, 0.5f, 0.5f);//缩放
+		glTranslatef(0.f, 100.f, 0.f);//平移
+		glColor3ub(255,211,155);
+		drawFace(35);
+	}
+	glPopMatrix();
+
+	glPushMatrix(); {//左手小臂
+		glScalef(0.3f, 0.3f, 0.3f);//缩放
+		glTranslatef(-145.f, -30.f, 0.f);//平移
+		glRotatef(-30.f, 0.f, 0.f, 1.f);//
+		glColor3ub(255, 211, 155);
+		drawElemBody();
+	}
+	glPopMatrix();
+
+	glPushMatrix(); {//左手大臂
+		glScalef(0.3f, 0.3f, 0.3f);//缩放
+		glTranslatef(-100.f, 30.f, 0.f);//平移
+		glRotatef(-50.f, 0.f, 0.f, 1.f);//
+		glColor3ub(0, 0, 255);
+		drawElemBody();
+	}
+	glPopMatrix();
+
+	glPushMatrix(); {//右手小臂
+		glScalef(0.3f, 0.3f, 0.3f);//缩放
+		glTranslatef(180.f, 90.f, 0.f);//平移
+		glRotatef(135.f, 0.f, 0.f, 1.f);//
+		glColor3ub(255, 211, 155);
+		drawElemBody();
+	}
+	glPopMatrix();
+
+	glPushMatrix(); {//右手大臂
+		glScalef(0.3f, 0.3f, 0.3f);//缩放
+		glTranslatef(110.f, 50.f, 0.f);//平移
+		glRotatef(90.f, 0.f, 0.f, 1.f);//
+		glColor3ub(0, 0, 255);
+		drawElemBody();
+	}
+	glPopMatrix();
+
+	glutSwapBuffers();
+	glFlush();
+}
+
+
+void display(){
+	glClear(GL_COLOR_BUFFER_BIT);
+
+	glMatrixMode(GL_MODELVIEW);
+	glLoadIdentity();
+
+	glScalef(1.2f, 1.2f, 1.f);//缩放
+	glRotatef(135.f, 0.f, 0.f, 1.f);//旋转
+	glTranslatef(25.f, 25.f, 0.f);//平移
+	glColor3ub(255, 255, 0);
+	drawFace(35);
+
+	glutSwapBuffers();
+	glFlush();
+}
+
+
 int main(int argc, char* argv[])
 {
 	glutInit(&argc, argv);
@@ -133,7 +306,7 @@ int main(int argc, char* argv[])
 	glutInitWindowPosition(100, 100);
 	glutCreateWindow("GLHWORLD");
 
-	glutDisplayFunc(drawChart);
+	glutDisplayFunc(display);
 	glutReshapeFunc(reshape);
 
 	glewExperimental = GL_TRUE;
