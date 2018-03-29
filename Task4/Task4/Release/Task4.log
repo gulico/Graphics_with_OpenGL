@@ -1,0 +1,21 @@
+﻿生成启动时间为 2018/3/29 22:12:43。
+     1>项目“F:\Task4\Task4\Task4.vcxproj”在节点 2 上(Build 个目标)。
+     1>ClCompile:
+         E:\VS\VC\bin\CL.exe /c /IE:\GLLibs /IE:\opencv340\include /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Task4.cpp
+         Task4.cpp
+     1>Task4.cpp(55): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+     1>Task4.cpp(56): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+     1>Task4.cpp(59): warning C4244: “参数”: 从“float”转换到“int”，可能丢失数据
+     1>Task4.cpp(78): warning C4244: “参数”: 从“float”转换到“GLsizei”，可能丢失数据
+     1>Task4.cpp(102): warning C4244: “参数”: 从“float”转换到“int”，可能丢失数据
+       Link:
+         E:\VS\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"F:\Task4\Release\Task4.exe" /INCREMENTAL:NO /NOLOGO /LIBPATH:E:\GLLibs\libs /LIBPATH:E:\opencv340\lib opencv_core340.lib opencv_imgcodecs340.lib opencv_imgproc340.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"F:\Task4\Release\Task4.pdb" /SUBSYSTEM:CONSOLE /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"F:\Task4\Release\Task4.lib" /MACHINE:X86 /SAFESEH Release\stdafx.obj
+         Release\Task4.obj
+         正在生成代码
+         已完成代码的生成
+         Task4.vcxproj -> F:\Task4\Release\Task4.exe
+     1>已完成生成项目“F:\Task4\Task4\Task4.vcxproj”(Build 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:04.15
